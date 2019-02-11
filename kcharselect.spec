@@ -5,18 +5,18 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcharselect
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kcharselect-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kcharselect-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kcharselect-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kcharselect-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kcharselect-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kcharselect-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: kcharselect-bin
-Requires: kcharselect-data
-Requires: kcharselect-license
-Requires: kcharselect-locales
+Requires: kcharselect-bin = %{version}-%{release}
+Requires: kcharselect-data = %{version}-%{release}
+Requires: kcharselect-license = %{version}-%{release}
+Requires: kcharselect-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 
@@ -26,8 +26,8 @@ No detailed description available
 %package bin
 Summary: bin components for the kcharselect package.
 Group: Binaries
-Requires: kcharselect-data
-Requires: kcharselect-license
+Requires: kcharselect-data = %{version}-%{release}
+Requires: kcharselect-license = %{version}-%{release}
 
 %description bin
 bin components for the kcharselect package.
@@ -66,25 +66,25 @@ locales components for the kcharselect package.
 
 
 %prep
-%setup -q -n kcharselect-18.08.0
+%setup -q -n kcharselect-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535195364
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549863900
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535195364
+export SOURCE_DATE_EPOCH=1549863900
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kcharselect
-cp COPYING %{buildroot}/usr/share/doc/kcharselect/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/kcharselect
+cp COPYING %{buildroot}/usr/share/package-licenses/kcharselect/COPYING
 pushd clr-build
 %make_install
 popd
@@ -106,7 +106,6 @@ popd
 %defattr(0644,root,root,0755)
 /usr/share/doc/HTML/ca/kcharselect/index.cache.bz2
 /usr/share/doc/HTML/ca/kcharselect/index.docbook
-/usr/share/doc/HTML/ca/kcharselect/kcharselect.png
 /usr/share/doc/HTML/cs/kcharselect/index.cache.bz2
 /usr/share/doc/HTML/cs/kcharselect/index.docbook
 /usr/share/doc/HTML/de/kcharselect/index.cache.bz2
@@ -146,8 +145,8 @@ popd
 /usr/share/doc/HTML/uk/kcharselect/kcharselect.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kcharselect/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kcharselect/COPYING
 
 %files locales -f kcharselect.lang
 %defattr(-,root,root,-)
