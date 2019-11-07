@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcharselect
-Version  : 19.08.2
-Release  : 13
-URL      : https://download.kde.org/stable/applications/19.08.2/src/kcharselect-19.08.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.2/src/kcharselect-19.08.2.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.2/src/kcharselect-19.08.2.tar.xz.sig
+Version  : 19.08.3
+Release  : 14
+URL      : https://download.kde.org/stable/applications/19.08.3/src/kcharselect-19.08.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.3/src/kcharselect-19.08.3.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.3/src/kcharselect-19.08.3.tar.xz.sig
 Summary  : Character Selector
 Group    : Development/Tools
 License  : GPL-2.0
@@ -66,14 +66,14 @@ locales components for the kcharselect package.
 
 
 %prep
-%setup -q -n kcharselect-19.08.2
+%setup -q -n kcharselect-19.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570739273
+export SOURCE_DATE_EPOCH=1573164721
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -90,10 +90,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570739273
+export SOURCE_DATE_EPOCH=1573164721
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcharselect
-cp COPYING %{buildroot}/usr/share/package-licenses/kcharselect/COPYING
+cp %{_builddir}/kcharselect-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/kcharselect/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
@@ -157,7 +157,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kcharselect/COPYING
+/usr/share/package-licenses/kcharselect/7c203dee3a03037da436df03c4b25b659c073976
 
 %files locales -f kcharselect.lang
 %defattr(-,root,root,-)
