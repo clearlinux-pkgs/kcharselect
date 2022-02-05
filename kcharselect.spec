@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kcharselect
-Version  : 21.12.1
-Release  : 35
-URL      : https://download.kde.org/stable/release-service/21.12.1/src/kcharselect-21.12.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.1/src/kcharselect-21.12.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.1/src/kcharselect-21.12.1.tar.xz.sig
+Version  : 21.12.2
+Release  : 36
+URL      : https://download.kde.org/stable/release-service/21.12.2/src/kcharselect-21.12.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.12.2/src/kcharselect-21.12.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.12.2/src/kcharselect-21.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 GPL-2.0
@@ -66,15 +66,15 @@ locales components for the kcharselect package.
 
 
 %prep
-%setup -q -n kcharselect-21.12.1
-cd %{_builddir}/kcharselect-21.12.1
+%setup -q -n kcharselect-21.12.2
+cd %{_builddir}/kcharselect-21.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641960361
+export SOURCE_DATE_EPOCH=1644020561
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,12 +90,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1641960361
+export SOURCE_DATE_EPOCH=1644020561
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcharselect
-cp %{_builddir}/kcharselect-21.12.1/COPYING %{buildroot}/usr/share/package-licenses/kcharselect/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kcharselect-21.12.1/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kcharselect/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/kcharselect-21.12.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kcharselect/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kcharselect-21.12.2/COPYING %{buildroot}/usr/share/package-licenses/kcharselect/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kcharselect-21.12.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kcharselect/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/kcharselect-21.12.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kcharselect/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 pushd clr-build
 %make_install
 popd
